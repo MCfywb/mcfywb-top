@@ -1,0 +1,149 @@
+- class_name: 关于页
+  subtitle: 喜欢就争取 得到的就珍惜
+  avatarImg: https://q.qlogo.cn/headimg_dl?dst_uin=3109247989&spec=640&img_type=jpg
+  avatarSkills:
+    left:
+      - 🤖️ 数码科技爱好者
+      - 🔍 分享与热心帮助
+      - 🏠 智能家居小能手
+      - 🔨 设计开发一条龙
+    right:
+      - 专修交互与设计 🤝
+      - 脚踏实地行动派 🏃
+      - 团队小组发动机 🧱
+      - 壮汉人狠话不多 💢
+  name: MC风月无边
+  description: 是一名 学生、B站UP主、独立开发者
+  aboutsiteTips:
+    tips: 追求
+    title1: 源于
+    title2: 热爱而去 感受
+    word:
+      - 学习
+      - 生活
+      - 程序
+      - 体验
+  helloAbout: Hello there!
+  skillsTips:
+    tips: 技能
+    title: 开启创造力
+  careers:
+    tips: 生涯
+    title: 无限进步
+    list:
+      - desc: EDU，软件技术专业
+        color: "#357ef5"
+    img: https://img.mcfywb.top/about/timeline.webp
+  statistic:
+    link: /archives
+    text: 文章隧道
+    cover: https://img.mcfywb.top/about/F5fxRrxaIAAzXJS.webp
+  map:
+    title: 我现在住在
+    StrengthenTitle: 中国，盐城市，射阳县
+    background: https://img.mcfywb.top/about/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-07-02%20010748.webp
+    backgroundDark: https://img.mcfywb.top/about/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-07-02%20010756.webp
+  selfInfo:
+    selfInfoTips1: 生于
+    selfInfoContentYear: 2006
+    selfInfoTips2: 江苏电子信息职业学院
+    selfInfoContent2: 软件技术
+    selfInfoTips3: 现在职业
+    selfInfoContent3: 大三学生👨‍🎓
+  personalities:
+    author_name: 守卫者
+    personality_type: ISFJ-T
+    photo_url: https://img.mcfywb.top/comments/Go9nH4KbwAA5p_z.webp
+    personality_img: https://img.mcfywb.top/about/isfj-defender-female.svg
+    name_url: https://www.16personalities.com/ch/isfj-%E4%BA%BA%E6%A0%BC
+  maxim:
+    maxim_tips: 座右铭
+    maxim_top: 喜欢就争取
+    maxim_bottom: 得到的就珍惜
+  buff:
+    buff_tips: 特长
+    buff_top: 玄学流电脑疑难问题解决专家
+    buff_bottom: 软件折腾能力 大师级
+  game:
+    game_tips: 爱好游戏
+    game_title: 原神
+    game_uid: "UID: 128959587"
+    game_bg: https://img.mcfywb.top/about/544bf0d17e4570f886fd1b731a3274da_2781179287929742503.webp
+  comic:
+    comic_tips: 爱好动漫
+    comic_title: 追番与追剧
+    comic_list:
+      - name: 天气之子
+        href: https://www.bilibili.com/bangumi/play/ep332611
+        cover: https://img.mcfywb.top/about/269235_Dg6gZ.webp
+      - name: Re：从零开始的异世界生活
+        href: https://www.bilibili.com/bangumi/play/ep307056
+        cover: https://img.mcfywb.top/about/140001_Ew1mo.webp
+      - name: 请问您今天要来点兔子吗？
+        href: https://www.bilibili.com/bangumi/play/ep95840
+        cover: https://img.mcfywb.top/about/88287_h4xKo.webp
+      - name: 埃罗芒阿老师
+        href: https://www.bilibili.com/bangumi/play/ep103917
+        cover: https://img.mcfywb.top/about/172498_wfm40.webp
+      - name: 总之就是非常可爱
+        href: https://www.bilibili.com/bangumi/play/ep341244
+        cover: https://img.mcfywb.top/about/301541_p2z4K.webp
+  like:
+    like_tips: 关注偏好
+    like_title: 数码科技
+    like_bg: https://img.mcfywb.top/about/4461.webp
+    like_bottom: 手机、电脑软硬件
+  music:
+    music_tips: 音乐偏好
+    music_title: 不是花火呀、鎖那、葛雨晴
+    music_bg: https://img.mcfywb.top/about/channels4_profile.webp
+    music_link: /music
+  reward_list:
+    - name: 秋秋
+      amount: 6.60
+      datatime: 2026-10-08
+    - name: 天才交易员久留美
+      amount: 10.00
+      datatime: 2026-10-08
+    - name: Viper
+      amount: 5.00
+      datatime: 2026-10-08
+    - name: 情绪
+      amount: 0.48
+      datatime: 2026-09-21
+    - name: 言午木心
+      amount: 10.00
+      datatime: 2026-08-14
+    - name: 长期素食
+      amount: 0.01
+      datatime: 2026-08-03
+    - name: 吾乃常人也
+      amount: 10.00
+      datatime: 2026-07-21
+    - name: 长期素食
+      amount: 0.01
+      datatime: 2026-07-05
+    - name: Viper
+      amount: 1.00
+      datatime: 2026-06-26
+    - name: 言午木心
+      amount: 10.01
+      datatime: 2026-06-05
+    - name: 禧飏飏
+      amount: 0.01
+      datatime: 2026-06-04
+    - name: 长期素食
+      amount: 0.01
+      datatime: 2026-06-01
+    - name: 长期素食
+      amount: 0.10
+      datatime: 2026-05-29
+    - name: zzy
+      amount: 0.01
+      datatime: 2026-05-21
+    - name: TheBUGMUXI
+      amount: 5.00
+      datatime: 2024-12-27
+    - name: TheBUGMUXI
+      amount: 48.00
+      datatime: 2024-09-26
