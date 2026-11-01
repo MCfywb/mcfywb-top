@@ -62,3 +62,14 @@ textarea,
 [aria-disabled="true"] {
   cursor: not-allowed !important;
 }
+
+/* ========== 页脚徽章：取消 150px 宽度上限，避免宽 SVG 被横向挤扁 ========== */
+/* 主题原规则只锁 height:20px，宽度却被 max-width:150px 砍断，
+   导致 CC 徽章(239px→150px)、苏公网安备(191px→150px)文字被压扁。
+   改为按 SVG 自身比例自适应宽度。 */
+#ghbdages .github-badge img {
+  max-width: none !important;
+  width: auto !important;
+  height: 20px;
+  flex-shrink: 0;
+}
