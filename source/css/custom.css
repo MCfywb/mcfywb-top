@@ -73,3 +73,31 @@ textarea,
   height: 20px;
   flex-shrink: 0;
 }
+
+/* ========== 首页右侧站长卡片：副标题自然折行 + 社交图标横排 ========== */
+/* 根因：.author-info__bottom-group 为 flex 左右两栏，但未分配宽度、
+   未限制收缩。flex 子项默认 min-width:auto，导致左侧副标题
+   「思念周而复始 在一万次雨季」被硬挤在一行；右侧图标区同样被压缩换行。
+   作用域限定 #aside-content .card-info，不影响顶部导航栏复用的 social 图标。 */
+
+/* 左侧文字区：允许收缩，副标题可自然折行 */
+#aside-content .card-info .author-info__bottom-group-left {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+#aside-content .card-info .author-info__desc {
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+/* 右侧图标区：横向排列且不被压缩 */
+#aside-content .card-info .card-info-social-icons {
+  flex: 0 0 auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+#aside-content .card-info .card-info-social-icons .social-icon {
+  margin: 0;
+  flex: 0 0 auto;
+}
