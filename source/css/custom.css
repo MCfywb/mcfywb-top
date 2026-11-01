@@ -3,70 +3,95 @@
     src: url("https://cdn.mcfywb.top/mcfywb-top-font/font.woff2") format("woff2");
 }
 
-/* ========== 全局自定义鼠标光标（全站强制覆盖） ========== */
-/* 说明：
-   - 图片 32×32，路径 /cursor/xxx.png
-   - "0 0" / "16 16" 为热点坐标，偏移可改
-   - 用 * { ... !important } 强制覆盖主题自带的所有 cursor 规则，
-     保证全站任何位置都不会回退到系统光标
-*/
+/* ==========================================================================
+   全站自定义鼠标光标（统一整合版，不再打散补丁）
+   --------------------------------------------------------------------------
+   结构：3 条大规则 + 2 条例外，全部 !important
+     ① 默认：html / body / 所有元素 / 所有伪元素
+     ② 指针：一个 :is() 大列表，列表内含 ID 选择器 → 整条规则特异性
+        提升到 (1,0,2)，可稳定压过主题与 APlayer CDN 里所有
+        cursor:pointer !important，因此不再需要单独的 CDN 补丁
+     ③ 文本：输入框 / 编辑区（写在 ② 之后，同特异性下后者胜）
+     例外：禁用态 not-allowed；AI 摘要跟随光标保留 auto
+   热点坐标（依据 PNG 像素分析）：
+     default.png 手型，指尖 (2,3) ／ pointer.png 箭头尖 (2,7) ／ text.png 居中 (16,16)
+   ========================================================================== */
 
-/* 1) 默认光标：全站每个元素强制应用自定义默认光标 */
-* {
-  cursor: url("/cursor/default.png") 0 0, auto !important;
+/* ① 全站默认光标：所有元素及伪元素 */
+html,
+body,
+*,
+*::before,
+*::after {
+  cursor: url("/cursor/default.png") 2 3, auto !important;
 }
 
-/* 2) 可交互元素：覆盖为自定义指针 */
-a,
-a *,
-button,
-button *,
-input,
-label,
-summary,
-select,
-[role="button"],
-[role="link"],
-[onclick],
-[href],
-.pointer,
-.clickable {
-  cursor: url("/cursor/pointer.png") 0 0, pointer !important;
+/* ② 全站可交互元素：统一一个大选择器 */
+html body :is(
+  a, a *,
+  button, button *,
+  label, label *,
+  summary,
+  input, select,
+  [role="button"], [role="link"], [onclick], [href],
+  .pointer, .clickable,
+  #rightside-config, #go-up, #darkmode, #readmode,
+  #translateLink, #hide-aside-btn, #mobile-toc-button, #chat-btn,
+  #to_comment, #switch-commentBarrage,
+  #rightside button, #rightside a,
+  #rightside button *, #rightside a *,
+  .aplayer-icon, .aplayer-pic, .aplayer-bar-wrap, .aplayer-volume-wrap,
+  .aplayer-list ol li, .aplayer-list ol li .aplayer-list-cur,
+  .aplayer-info .aplayer-music,
+  .aplayer-controller .aplayer-time .aplayer-icon,
+  i.bber-logo,
+  .rightMenu-item, .console-btn-item, .deal_link,
+  .back-menu-item, .menus_item, .site-page, .social-icon,
+  .toc-link, .article-title, .post-reward, .share-button,
+  .recent-post-item, .article-sort-item, .flink-item,
+  .category-bar-item, .pagination, .page-number, .next-post,
+  .relatedPosts, .post-share, .github-badge,
+  .footer-item, .footer-bar-link
+) {
+  cursor: url("/cursor/pointer.png") 2 7, pointer !important;
 }
 
-/* 3) 文本输入 / 编辑区域：用文本光标 */
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="search"],
-input[type="url"],
-input[type="number"],
-input[type="tel"],
-input[type="date"],
-input[type="datetime-local"],
-input[type="month"],
-input[type="week"],
-input[type="time"],
-textarea,
-[contenteditable="true"] {
+/* 按钮 / 链接内的字体图标伪元素（齿轮、箭头等）显式声明，
+   避免 ::before 绘制的像素区域回退到系统光标 */
+a [class*="anzhiyu-icon-"]::before,
+button [class*="anzhiyu-icon-"]::before,
+a [class*="fa-"]::before,
+button [class*="fa-"]::before,
+#rightside [class*="anzhiyu-icon-"]::before {
+  cursor: url("/cursor/pointer.png") 2 7, pointer !important;
+}
+
+/* ③ 文本输入 / 编辑区（同特异性，写在 ② 之后故优先生效） */
+html body :is(
+  input[type="text"], input[type="email"], input[type="password"],
+  input[type="search"], input[type="url"], input[type="number"],
+  input[type="tel"], input[type="date"], input[type="datetime-local"],
+  input[type="month"], input[type="week"], input[type="time"],
+  textarea, [contenteditable="true"]
+) {
   cursor: url("/cursor/text.png") 16 16, text !important;
 }
 
-/* 4) 主题自带特殊光标：AI 摘要跟随光标，单独保留其默认处理 */
+/* 例外 1：禁用态保留原生提示 */
+html body :is([disabled], [aria-disabled="true"]) {
+  cursor: not-allowed !important;
+}
+
+/* 例外 2：AI 摘要跟随光标，保留主题默认处理（避免出现双光标） */
 .ai-cursor {
   cursor: auto !important;
 }
 
-/* 5) 禁用态：保留原生 not-allowed（放最后以优先） */
-[disabled],
-[aria-disabled="true"] {
-  cursor: not-allowed !important;
-}
-
-/* ========== 页脚徽章：取消 150px 宽度上限，避免宽 SVG 被横向挤扁 ========== */
-/* 主题原规则只锁 height:20px，宽度却被 max-width:150px 砍断，
+/* ==========================================================================
+   页脚徽章：取消 150px 宽度上限，避免宽 SVG 被横向挤扁
+   主题原规则只锁 height:20px，宽度却被 max-width:150px 砍断，
    导致 CC 徽章(239px→150px)、苏公网安备(191px→150px)文字被压扁。
-   改为按 SVG 自身比例自适应宽度。 */
+   ========================================================================== */
 #ghbdages .github-badge img {
   max-width: none !important;
   width: auto !important;
@@ -74,13 +99,11 @@ textarea,
   flex-shrink: 0;
 }
 
-/* ========== 首页右侧站长卡片：副标题自然折行 + 社交图标横排 ========== */
-/* 根因：.author-info__bottom-group 为 flex 左右两栏，但未分配宽度、
-   未限制收缩。flex 子项默认 min-width:auto，导致左侧副标题
-   「思念周而复始 在一万次雨季」被硬挤在一行；右侧图标区同样被压缩换行。
-   作用域限定 #aside-content .card-info，不影响顶部导航栏复用的 social 图标。 */
-
-/* 左侧文字区：允许收缩，副标题可自然折行 */
+/* ==========================================================================
+   首页右侧站长卡片：副标题自然折行 + 社交图标横排
+   根因：.author-info__bottom-group 为 flex 左右两栏，但未分配宽度、
+   未限制收缩。flex 子项默认 min-width:auto，导致副标题被挤在一行。
+   ========================================================================== */
 #aside-content .card-info .author-info__bottom-group-left {
   flex: 1 1 auto;
   min-width: 0;
@@ -89,8 +112,6 @@ textarea,
   line-height: 1.4;
   word-break: break-word;
 }
-
-/* 右侧图标区：横向排列且不被压缩 */
 #aside-content .card-info .card-info-social-icons {
   flex: 0 0 auto;
   flex-direction: row;
