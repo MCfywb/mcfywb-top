@@ -99,26 +99,3 @@ html body :is([disabled], [aria-disabled="true"]) {
   flex-shrink: 0;
 }
 
-/* ==========================================================================
-   首页右侧站长卡片：副标题自然折行 + 社交图标横排
-   根因：.author-info__bottom-group 为 flex 左右两栏，但未分配宽度、
-   未限制收缩。flex 子项默认 min-width:auto，导致副标题被挤在一行。
-   ========================================================================== */
-#aside-content .card-info .author-info__bottom-group-left {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-#aside-content .card-info .author-info__desc {
-  line-height: 1.4;
-  word-break: break-word;
-}
-#aside-content .card-info .card-info-social-icons {
-  flex: 0 0 auto;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  gap: 8px;
-}
-#aside-content .card-info .card-info-social-icons .social-icon {
-  margin: 0;
-  flex: 0 0 auto;
-}

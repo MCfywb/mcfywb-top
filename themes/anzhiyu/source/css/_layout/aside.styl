@@ -46,6 +46,10 @@
       justify-content: space-between;
       width: 100%;
       align-items: center;
+      // 左侧文字区允许收缩，副标题才能自然折行
+      .author-info__bottom-group-left
+        flex: 1 1 auto;
+        min-width: 0
       .author-info__name
         text-align: left;
         font-weight: 700;
@@ -58,7 +62,8 @@
         font-size: 12px;
         color: var(--anzhiyu-white);
         opacity: .6;
-        line-height: 1;
+        line-height: 1.4;
+        word-break: break-word
 
     .author-info__description
       position: absolute;
@@ -111,11 +116,13 @@
       display: flex;
       justify-content: flex-start;
       flex-direction: row;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      gap: 8px;
       cursor: pointer;
 
       .social-icon
-        margin: 0 0 0 10px
+        margin: 0;
+        flex: 0 0 auto;
         color: var(--anzhiyu-fontcolor);
         font-size: 1.4em;
         cursor: pointer;
