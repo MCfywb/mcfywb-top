@@ -104,7 +104,7 @@ deploy:
   type: sftp
   host: 'mcfywb.top'
   user: 'Administrator'
-  pass: 'MCfywb123QWE'
+  privateKey: 'C:/Users/MCfywb/.ssh/id_ed25519'
   remotePath: '/C:/Users/Administrator/Documents/www'
   port: '22'
   forceUpload: true
